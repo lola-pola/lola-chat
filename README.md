@@ -1,2 +1,2 @@
-# shuka
-shuka
+# chat-with-pdf
+chat-with-pdf

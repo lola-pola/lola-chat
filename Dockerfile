@@ -1,27 +1,10 @@
-FROM python:3.10-slim
+FROM python:3.9
 
-
-
-# Set environment variables
-ENV PYTHONDONTWRITEBYTECODE 1
-ENV PYTHONUNBUFFERED 1
-
-# Install dependencies
-RUN apt-get update
-RUN apt-get install -y pandoc
-# RUN apt-get install libssl1.0.2 libasound2
-
-# Set work directory
 WORKDIR /app
-
-# Copy project
 COPY app .
-COPY requirements.txt .
+COPY req req
+RUN pip install -r req
 
 
-# Install dependencies
-RUN pip install --upgrade pip
-RUN pip install -r requirements.txt
 
-# Run server
-CMD ["streamlit", "run" , "shuka.py","--server.port","80"]
+CMD ["streamlit", "run" , "bot.py","--server.port","80"]
